@@ -33,22 +33,24 @@ A random integer, sum of MNIST label and the random integer along with MNIST Ima
 * One hot encoded random number is concatenated with the MNIST image features, are further passed to fully connected layers to predict the sum
 * MNIST features are flatten and passed to a softmax function directly to predict the MNIST number
 
-      Net(
-        (conv1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (pool1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (conv3): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (conv4): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (pool2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      Network(
+        (conv1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+        (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+        (conv3): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1))
+        (conv4): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1))
         (conv5): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1))
         (conv6): Conv2d(512, 1024, kernel_size=(3, 3), stride=(1, 1))
-        (conv7): Conv2d(1024, 10, kernel_size=(3, 3), stride=(1, 1))
-        (fc1): Linear(in_features=20, out_features=128, bias=True)
-        (fc2): Linear(in_features=128, out_features=19, bias=True)
+        (fc1): Linear(in_features=50176, out_features=120, bias=True)
+        (fc2): Linear(in_features=120, out_features=60, bias=True)
+        (fc3): Linear(in_features=10, out_features=120, bias=True)
+        (fc4): Linear(in_features=120, out_features=60, bias=True)
+        (out1): Linear(in_features=60, out_features=10, bias=True)
+        (out2): Linear(in_features=60, out_features=19, bias=True)
+        (dropout): Dropout(p=0.2, inplace=False)
       )
 
 ## Number of parameters
-Model has 6,384,925 trainable parameters.
+Model has 12,326,465 trainable parameters.
 
 
 ## Loss Function
@@ -65,104 +67,44 @@ x represents the actual value and y the predicted value.
 ## Training Log
 
       Epoch 1 : 
-      Train set: Average loss: 1.3915
-      val set: Average loss: 1.368, MNist Accuracy:93.04, Sum_Accuracy:10.88
+      epoch: 1 , loss mnist : 4836.4594547423185, loss sum : 0.0
+      Val set: Average loss: 0.138, MNIST Accuracy:95.62, Sum_Accuracy:1.2
 
       Epoch 2 : 
-      Train set: Average loss: 1.2572
-      val set: Average loss: 1.248, MNist Accuracy:96.16, Sum_Accuracy:15.22
+      epoch: 2 , loss mnist : 829.8254803930613, loss sum : 0.0
+      Val set: Average loss: 0.106, MNIST Accuracy:96.96, Sum_Accuracy:1.18
 
       Epoch 3 : 
-      Train set: Average loss: 1.1600
-      val set: Average loss: 1.188, MNist Accuracy:96.9, Sum_Accuracy:17.76
+      epoch: 3 , loss mnist : 559.0599792947141, loss sum : 0.0
+      Val set: Average loss: 0.023, MNIST Accuracy:98.12, Sum_Accuracy:1.3
 
       Epoch 4 : 
-      Train set: Average loss: 1.1511
-      val set: Average loss: 1.125, MNist Accuracy:97.82, Sum_Accuracy:29.12
+      epoch: 4 , loss mnist : 426.3578369369934, loss sum : 0.0
+      Val set: Average loss: 0.018, MNIST Accuracy:98.16, Sum_Accuracy:1.14
 
       Epoch 5 : 
-      Train set: Average loss: 1.0766
-      val set: Average loss: 1.075, MNist Accuracy:98.24, Sum_Accuracy:38.64
+      epoch: 5 , loss mnist : 343.4942731789979, loss sum : 0.0
+      Val set: Average loss: 0.014, MNIST Accuracy:98.58, Sum_Accuracy:1.0
 
       Epoch 6 : 
-      Train set: Average loss: 0.9500
-      val set: Average loss: 1.012, MNist Accuracy:98.04, Sum_Accuracy:41.8
+      epoch: 6 , loss mnist : 281.4830155648451, loss sum : 0.0
+      Val set: Average loss: 0.001, MNIST Accuracy:98.84, Sum_Accuracy:1.12
 
       Epoch 7 : 
-      Train set: Average loss: 0.9224
-      val set: Average loss: 0.926, MNist Accuracy:98.38, Sum_Accuracy:57.8
+      epoch: 7 , loss mnist : 240.01546333435635, loss sum : 0.0
+      Val set: Average loss: 0.001, MNIST Accuracy:98.8, Sum_Accuracy:1.1
 
       Epoch 8 : 
-      Train set: Average loss: 0.7930
-      val set: Average loss: 0.852, MNist Accuracy:98.4, Sum_Accuracy:66.42
+      epoch: 8 , loss mnist : 206.07607260052555, loss sum : 0.0
+      Val set: Average loss: 0.001, MNIST Accuracy:98.82, Sum_Accuracy:1.0
 
       Epoch 9 : 
-      Train set: Average loss: 0.7626
-      val set: Average loss: 0.767, MNist Accuracy:98.52, Sum_Accuracy:77.82
+      epoch: 9 , loss mnist : 176.6826218062921, loss sum : 0.0
+      Val set: Average loss: 0.001, MNIST Accuracy:99.14, Sum_Accuracy:1.16
 
       Epoch 10 : 
-      Train set: Average loss: 0.6550
-      val set: Average loss: 0.676, MNist Accuracy:98.68, Sum_Accuracy:84.98
-
-      Epoch 11 : 
-      Train set: Average loss: 0.6017
-      val set: Average loss: 0.592, MNist Accuracy:98.62, Sum_Accuracy:90.2
-
-      Epoch 12 : 
-      Train set: Average loss: 0.4858
-      val set: Average loss: 0.507, MNist Accuracy:98.8, Sum_Accuracy:93.72
-
-      Epoch 13 : 
-      Train set: Average loss: 0.4871
-      val set: Average loss: 0.434, MNist Accuracy:98.82, Sum_Accuracy:95.58
-
-      Epoch 14 : 
-      Train set: Average loss: 0.3552
-      val set: Average loss: 0.364, MNist Accuracy:98.72, Sum_Accuracy:97.52
-
-      Epoch 15 : 
-      Train set: Average loss: 0.2759
-      val set: Average loss: 0.303, MNist Accuracy:98.82, Sum_Accuracy:98.24
-
-      Epoch 16 : 
-      Train set: Average loss: 0.2438
-      val set: Average loss: 0.251, MNist Accuracy:98.92, Sum_Accuracy:98.38
-
-      Epoch 17 : 
-      Train set: Average loss: 0.1744
-      val set: Average loss: 0.214, MNist Accuracy:99.02, Sum_Accuracy:98.62
-
-      Epoch 18 : 
-      Train set: Average loss: 0.1420
-      val set: Average loss: 0.183, MNist Accuracy:98.86, Sum_Accuracy:98.64
-
-      Epoch 19 : 
-      Train set: Average loss: 0.1160
-      val set: Average loss: 0.159, MNist Accuracy:99.0, Sum_Accuracy:98.96
-
-      Epoch 20 : 
-      Train set: Average loss: 0.1003
-      val set: Average loss: 0.143, MNist Accuracy:98.88, Sum_Accuracy:98.82
-
-      Epoch 21 : 
-      Train set: Average loss: 0.0719
-      val set: Average loss: 0.123, MNist Accuracy:99.06, Sum_Accuracy:98.82
-
-      Epoch 22 : 
-      Train set: Average loss: 0.0746
-      val set: Average loss: 0.117, MNist Accuracy:98.88, Sum_Accuracy:98.64
-
-      Epoch 23 : 
-      Train set: Average loss: 0.0590
-      val set: Average loss: 0.105, MNist Accuracy:99.06, Sum_Accuracy:98.82
-
-      Epoch 24 : 
-      Train set: Average loss: 0.0606
-      val set: Average loss: 0.098, MNist Accuracy:99.0, Sum_Accuracy:98.76
-
-      Epoch 25 : 
-      Train set: Average loss: 0.0566
-      val set: Average loss: 0.090, MNist Accuracy:99.0, Sum_Accuracy:98.84
+      epoch: 10 , loss mnist : 149.8762259758117, loss sum : 0.0
+      Val set: Average loss: 0.000, MNIST Accuracy:99.1, Sum_Accuracy:1.06
 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/42609155/119095568-10eb8880-ba30-11eb-910d-f766d3a1d237.png" width="500"></p>
@@ -180,12 +122,6 @@ x represents the actual value and y the predicted value.
     <img src="https://user-images.githubusercontent.com/42609155/119100042-2adb9a00-ba35-11eb-96a9-b3ef330a6954.png" width="200">
 </p>
 
-## References
-
-[How to build custom Datasets for Images in Pytorch](https://youtu.be/ZoZHd0Zm3RY)<br>
-[concatenate-layer-output-with-additional-input-data](https://discuss.pytorch.org/t/concatenate-layer-output-with-additional-input-data/20462)<br>
-[Is one-hot-encoding required for target label](https://stackoverflow.com/questions/62456558/is-one-hot-encoding-required-for-using-pytorchs-cross-entropy-loss-function)<br>
-[How to build a multimodal deep learning](https://www.drivendata.co/blog/hateful-memes-benchmark/)
 
 
 
