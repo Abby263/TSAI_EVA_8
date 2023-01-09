@@ -27,8 +27,6 @@ A random integer, sum of MNIST label and the random integer along with MNIST Ima
 
 ## Model
 
-<p align="center"><img src="https://github.com/gkdivya/EVA/blob/7b9feda284e2b2eb7342e1652f7efb5e95206e09/3_PyTorchNeuralNetwork/assets/MNIST_RandomAddition.png" width="800"></p>
-
 * Using convolution blocks, MNIST image features are extracted 
 * One hot encoded random number is concatenated with the MNIST image features, are further passed to fully connected layers to predict the sum
 * MNIST features are flatten and passed to a softmax function directly to predict the MNIST number
@@ -105,27 +103,3 @@ x represents the actual value and y the predicted value.
       Epoch 10 : 
       epoch: 10 , loss mnist : 149.8762259758117, loss sum : 0.0
       Val set: Average loss: 0.000, MNIST Accuracy:99.1, Sum_Accuracy:1.06
-
-
-<p align="center"><img src="https://user-images.githubusercontent.com/42609155/119095568-10eb8880-ba30-11eb-910d-f766d3a1d237.png" width="500"></p>
-
-## Test Loss
-
-      Test set: Average loss: 0.072, MNist Accuracy:99.27, Sum_Accuracy:99.24
-      
-## Inference
-
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/42609155/119095810-60ca4f80-ba30-11eb-974f-e123a9e02fb3.png" width="200">
-    <img src="https://user-images.githubusercontent.com/42609155/119095818-645dd680-ba30-11eb-980d-8fe1618ff0be.png" width="200">
-    <img src="https://user-images.githubusercontent.com/42609155/119095826-66279a00-ba30-11eb-8720-495a8134885b.png" width="200">
-    <img src="https://user-images.githubusercontent.com/42609155/119100042-2adb9a00-ba35-11eb-96a9-b3ef330a6954.png" width="200">
-</p>
-
-
-
-
-
-
-
-
